@@ -48,6 +48,13 @@ jobs:
             --function-name $FUNCTION_NAME \
             --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
+      - name: Wait for Lambda update to complete
+        run: |
+          FUNCTION_NAME="css-battle"
+
+          # Attend que la mise à jour soit terminée
+          aws lambda wait function-updated --function-name $FUNCTION_NAME
+
       - name: Update Lambda environment variables
         run: |
           FUNCTION_NAME="css-battle"
