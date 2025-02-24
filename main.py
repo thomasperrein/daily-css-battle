@@ -6,8 +6,6 @@ import time
 import datetime
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from tempfile import mkdtemp
@@ -100,3 +98,7 @@ def send_slack_message():
 
 def lambda_handler(event, context):
     return send_slack_message()
+
+
+if __name__ == "__main__":
+    send_slack_message()
